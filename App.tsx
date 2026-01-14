@@ -9,6 +9,7 @@ import { MapPin, Clock, MessageSquareText } from 'lucide-react';
 
 const MAPS_URL = "https://maps.app.goo.gl/NSUrzCeqjLtAw34XA";
 const FEEDBACK_URL = "https://forms.gle/XfsSUstrK1swVYZdA";
+const JOIN_URL = "https://forms.gle/PEhYAWZiSuq1aK8s7";
 
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>(Language.ENGLISH);
@@ -50,7 +51,7 @@ const App: React.FC = () => {
               {t.heroSubtitle}
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a href='https://docs.google.com/forms/d/1Q5svDD-H1hElvuKj7mC-HS5UCY7AkFVgCy9Yr3a3N1k' target="_blank" rel="noopener noreferrer">
+              <a href={JOIN_URL} target="_blank" rel="noopener noreferrer">
                 <Button>
                   {t.ctaButton}
                 </Button>
