@@ -25,6 +25,10 @@ export const TEXT_CONTENT: Record<Language, ContentText> = {
     aiDescription: "Here are some bilingual ideas to help you get the conversation flowing with your partner!",
     aiButton: "New Idea",
     footerRights: "© 2025 LEPV - Language Exchange Prototype of Valencia. All rights reserved.",
+    consentTitle: "Important Notice",
+    consentBody: "By signing up, you agree to photos being taken during the event. These photos will not be published publicly and are used solely as evidence that the language exchange is taking place.",
+    consentAgree: "I Agree & Proceed",
+    consentCancel: "Cancel",
   },
   [Language.SPANISH]: {
     navHome: "Inicio",
@@ -50,6 +54,10 @@ export const TEXT_CONTENT: Record<Language, ContentText> = {
     aiDescription: "¡Aquí tienes algunas ideas bilingües para ayudarte a que la conversación fluya con tu compañero!",
     aiButton: "Nueva Idea",
     footerRights: "© 2025 LEPV - Language Exchange Prototype de Valencia. Todos los derechos reservados.",
+    consentTitle: "Aviso Importante",
+    consentBody: "Al registrarte, aceptas que se tomen fotografías durante el evento. Estas fotos no se publicarán públicamente y se utilizan únicamente como evidencia de que el intercambio de idiomas se está llevando a cabo.",
+    consentAgree: "Acepto y Continuar",
+    consentCancel: "Cancelar",
   },
 };
 

@@ -32,6 +32,10 @@ export interface ContentText {
   navAbout: string;
   navEvents: string;
   navContact: string;
+  consentTitle: string;
+  consentBody: string;
+  consentAgree: string;
+  consentCancel: string;
 }
 
 export interface IcebreakerResponse {

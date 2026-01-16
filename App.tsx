@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Button from './components/Button';
 import Icebreaker from './components/Icebreaker';
-import { MapPin, Clock, MessageSquareText } from 'lucide-react';
+import { MapPin, Clock, MessageSquareText, Camera, X } from 'lucide-react';
 
 const MAPS_URL = "https://maps.app.goo.gl/NSUrzCeqjLtAw34XA";
 const FEEDBACK_URL = "https://forms.gle/XfsSUstrK1swVYZdA";
@@ -14,6 +14,7 @@ const JOIN_URL = "https://forms.gle/PEhYAWZiSuq1aK8s7";
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>(Language.ENGLISH);
   const [theme, setTheme] = useState<Theme>(Theme.LIGHT);
+  const [isConsentOpen, setIsConsentOpen] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -23,6 +24,15 @@ const App: React.FC = () => {
   }, []);
 
   const t = TEXT_CONTENT[language];
+
+  const handleJoinClick = () => {
+    setIsConsentOpen(true);
+  };
+
+  const handleAgreeAndProceed = () => {
+    window.open(JOIN_URL, '_blank', 'noopener,noreferrer');
+    setIsConsentOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
@@ -51,11 +61,9 @@ const App: React.FC = () => {
               {t.heroSubtitle}
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a href={JOIN_URL} target="_blank" rel="noopener noreferrer">
-                <Button>
-                  {t.ctaButton}
-                </Button>
-              </a>
+              <Button onClick={handleJoinClick}>
+                {t.ctaButton}
+              </Button>
               <a href={FEEDBACK_URL} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="flex items-center gap-2">
                   <MessageSquareText size={20} />
@@ -153,6 +161,58 @@ const App: React.FC = () => {
         </section>
 
       </main>
+
+      {/* Photo Consent Modal */}
+      {isConsentOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+          onClick={() => setIsConsentOpen(false)}
+        >
+          <div 
+            className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full mx-auto relative animate-fade-in-up"
+            onClick={e => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setIsConsentOpen(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-500 dark:hover:text-slate-300 transition-colors"
+              aria-label="Close"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="flex flex-col items-center text-center">
+              <div className="p-4 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-full mb-6">
+                <Camera size={36} />
+              </div>
+              
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                {t.consentTitle}
+              </h3>
+              
+              <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                {t.consentBody}
+              </p>
+
+              <div className="flex flex-col w-full gap-3">
+                <Button 
+                  onClick={handleAgreeAndProceed}
+                  fullWidth
+                >
+                  {t.consentAgree}
+                </Button>
+                <Button 
+                  onClick={() => setIsConsentOpen(false)}
+                  variant="outline"
+                  fullWidth
+                >
+                  {t.consentCancel}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Footer language={language} />
     </div>
   );
