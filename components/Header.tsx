@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Moon, Sun, Languages, X, Mail } from 'lucide-react';
 import { Language, Theme } from '../types';
@@ -57,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({ language, setLanguage, theme, setTheme 
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center gap-2">
               <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-white">
-                LEPV
+                LEV
               </span>
             </div>
 

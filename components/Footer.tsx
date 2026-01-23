@@ -14,7 +14,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
         
         <div className="flex items-center gap-2">
-          <span className="font-semibold text-slate-900 dark:text-slate-100">LEPV</span>
+          <span className="font-semibold text-slate-900 dark:text-slate-100">LEV</span>
         </div>
 
         <p className="text-slate-500 dark:text-slate-400 text-sm text-center">
